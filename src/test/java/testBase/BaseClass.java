@@ -30,7 +30,7 @@ public class BaseClass {
 
     @BeforeSuite
     @Parameters({"os","browser"})
-    public void setup(String os, String browser) throws IOException {
+    public void setup(@Optional("Windows") String os, @Optional("Chrome") String browser) throws IOException {
         //Loading config.properties file
         logger = LogManager.getLogger(this.getClass());
 
