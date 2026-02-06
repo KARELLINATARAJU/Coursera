@@ -21,7 +21,6 @@ public class TC04_searchWebDevelopmentCourseTest extends BaseClass {
         logger.info("Entering Web Development in search box");
         hp.sendKeysToSearchBox("Web Development");
         logger.info("Clicking on search button");
-//        hp.clickSearchButton();
         Actions act=new Actions(driver);
         act.keyDown(Keys.ENTER).keyUp(Keys.ENTER).perform();
         logger.info("******Ending TC04_searchWebDevelopmentCourseTest******");

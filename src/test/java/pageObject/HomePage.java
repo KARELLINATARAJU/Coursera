@@ -18,8 +18,22 @@ public class HomePage extends BasePage {
 
 
 
+//    public void clickSearchBox() {
+//        searchBox.click();
+//    }
+
     public void clickSearchBox() {
-        searchBox.click();
+        new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(12))
+                .until(org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf(searchBox));
+        ((org.openqa.selenium.JavascriptExecutor) driver)
+                .executeScript("arguments[0].scrollIntoView({block:'center'});", searchBox);
+        try {
+            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
+                    .until(org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable(searchBox));
+            searchBox.click();
+        } catch (org.openqa.selenium.ElementNotInteractableException e) {
+            ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", searchBox);
+        }
     }
 
     public void sendKeysToSearchBox(String query) {
